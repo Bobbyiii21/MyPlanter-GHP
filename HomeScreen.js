@@ -1,33 +1,25 @@
 import React from "react";
 import {
-  View,
-  ScrollView,
-  StyleSheet,
-  Text,
+  Button,
   Dimensions,
   ImageBackground,
+  StyleSheet,
+  Text,
+  View,
 } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
-import { Button } from "react-native";
 
 const { width } = Dimensions.get("window");
 const boxWidth = width / 2; //(width - 40) / 2; // Divide available width by 2 for two columns
 
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
-import { tw } from "twnrc";
+import tw from "twrnc";
 
 const MainHomeScreen = ({ navigation }) => {
   return (
     <View
-      style={{
-        flex: 1,
-        backgroundColor: "#7ACC7A",
-        alignItems: "center",
-        justifyContent: "center",
-        position: "absolute",
-        bottom: 95,
-      }}
+      style={tw`flex bg-green-50 items-center justify-center`}
     >
       {/* <ScrollView contentContainerStyle={styles.scrollViewContainer}> */}
 
@@ -236,7 +228,7 @@ function MyStack() {
     <NavigationContainer documentTitle={{ enabled: false }}>
       <Stack.Navigator
         initialRouteName="Home"
-        screenOptions={{ headerStyle: { backgroundColor: "#7ACC7A" } }}
+        screenOptions={{ headerStyle: tw`bg-green-200` }}
       >
         {/* Rename the Heading */}
         <Stack.Screen
