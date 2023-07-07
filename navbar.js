@@ -9,47 +9,55 @@ import {
 import { Ionicons } from "@expo/vector-icons";
 import { page } from "./Atoms";
 import { useRecoilState } from "recoil";
-import tw from "twrnc";
 
-const MenuItem = ({ icon, text, page }) => {
+const MenuBar = () => {
   const [currentPage, setCurrentPage] = useRecoilState(page);
   return (
-    <TouchableOpacity
-      style={tw`flex flex-col gap-1 items-center`}
-      onPress={() => setCurrentPage(page)}
-    >
-      <Ionicons name={icon} size={24} style={tw`text-green-950`} />
-      <Text style={tw`text-sm`}>{text}</Text>
-    </TouchableOpacity>
-  );
-};
-const MenuBar = () => {
-  return (
-    <View
-      style={tw`flex flex-row justify-around items-center bg-green-100 h-22`}
-    >
-      <MenuItem icon="ios-leaf" text="My Plant" page="Home" />
-      <MenuItem icon="notification" text="Notifications" page="Notifications" />
-      <MenuItem icon="ios-person" text="Profile" page="Profile" />
+    <View style={styles.container}>
+      <TouchableOpacity
+        style={styles.menuItem}
+        onPress={() => setCurrentPage("Home")}
+      >
+        <Ionicons name="ios-leaf" size={24} color="black" />
+        <Text style={styles.menuItemText}>My Plant</Text>
+      </TouchableOpacity>
+      {/* <TouchableOpacity
+        style={styles.menuItem}
+        onPress={() => setCurrentPage("Notifications")}
+      >
+        <Ionicons name="notifications" size={24} color="black" />
+        <Text style={styles.menuItemText}>Notifications</Text>
+      </TouchableOpacity> */}
+      <TouchableOpacity
+        style={styles.menuItem}
+        onPress={() => setCurrentPage("Profile")}
+      >
+        <Ionicons name="ios-person" size={24} color="black" />
+        <Text style={styles.menuItemText}>Profile</Text>
+      </TouchableOpacity>
+      
     </View>
   );
 };
+``;
 
 const styles = StyleSheet.create({
-  container: {˝
+  container: {
     flexDirection: "row",
-    //backgroundColor: '#7ACC7A',
-    height: 50,
+    backgroundColor: '#CFFFDB',
+    height: 89,
     justifyContent: "space-around",
     alignItems: "center",
     position: "absolute",
-    bottom: 34,
+    bottom: 0,
     left: 0,
     right: 0,
   },
   menuItem: {
     flexDirection: "column",
     alignItems: "center",
+    position: "relative",
+    bottom: 15
   },
   menuItemText: {
     fontSize: 12,

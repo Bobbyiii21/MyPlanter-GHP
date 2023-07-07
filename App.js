@@ -6,6 +6,8 @@ import { page } from "./Atoms";
 import Stack from "./HomeScreen";
 import NotificationsScreen from "./NotificationScreen";
 import MenuBar from "./navbar";
+import tw from "twrnc";
+
 
 function HomeScreen() {
   return <Stack />;
@@ -38,7 +40,7 @@ export default function App() {
       <View
         style={{
           flex: 1,
-          backgroundColor: "#7ACC7A",
+          backgroundColor: "#CFFFDB",
           alignItems: "stretch",
           justifyContent: "center",
         }} /*style={styles.container}*/
@@ -56,7 +58,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#7ACC7A",
+    backgroundColor: tw`bg-green-200`,
     alignItems: "center",
     justifyContent: "center",
   },

@@ -6,8 +6,9 @@ import {
   StyleSheet,
   Text,
   View,
+  Image,
 } from "react-native";
-import { TouchableOpacity } from "react-native-gesture-handler";
+import { ScrollView, TouchableOpacity } from "react-native-gesture-handler";
 
 const { width } = Dimensions.get("window");
 const boxWidth = width / 2; //(width - 40) / 2; // Divide available width by 2 for two columns
@@ -16,10 +17,13 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import tw from "twrnc";
 
+
 const MainHomeScreen = ({ navigation }) => {
   return (
     <View
-      style={tw`flex bg-green-50 items-center justify-center`}
+      style={{
+        backgroundColor: "#CFFFDB",
+      }}
     >
       {/* <ScrollView contentContainerStyle={styles.scrollViewContainer}> */}
 
@@ -48,7 +52,7 @@ const MainHomeScreen = ({ navigation }) => {
             blurRadius={10}
             opacity={0.5}
           />
-          <Text style={styles.textBoxText}>Box 1</Text>
+          <Text style={styles.textBoxText}>Plant 1</Text>
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() => navigation.navigate("Plant 2")}
@@ -61,7 +65,7 @@ const MainHomeScreen = ({ navigation }) => {
             blurRadius={10}
             opacity={0.5}
           />
-          <Text style={styles.textBoxText}>Box 2</Text>
+          <Text style={styles.textBoxText}>Plant 2</Text>
         </TouchableOpacity>
       </View>
       <View style={styles.column}>
@@ -76,7 +80,7 @@ const MainHomeScreen = ({ navigation }) => {
             blurRadius={10}
             opacity={0.5}
           />
-          <Text style={styles.textBoxText}>Box 3</Text>
+          <Text style={styles.textBoxText}>Plant 3</Text>
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() => navigation.navigate("Plant 4")}
@@ -89,7 +93,7 @@ const MainHomeScreen = ({ navigation }) => {
             blurRadius={10}
             opacity={0.5}
           />
-          <Text style={styles.textBoxText}>Box 4</Text>
+          <Text style={styles.textBoxText}>Plant 4</Text>
         </TouchableOpacity>
       </View>
       {/* </ScrollView> */}
@@ -104,10 +108,59 @@ const Plant1 = ({ navigation }) => {
         flex: 1,
         alignItems: "center",
         justifyContent: "center",
-        backgroundColor: "#7ACC7A",
+        backgroundColor: "#CFFFDB",
       }}
     >
-      <Button title="Go back" onPress={() => navigation.goBack()} />
+    <ImageBackground
+            style={{width: '100%', height: '100%', justifyContent: 'top', alignItems: 'top'}}
+            source={require("./assets/Plant1.jpeg")}
+            resizeMode="cover"
+            blurRadius={5}
+            opacity={1}
+            //alignSelf="center"
+            
+          />
+    {/*Create rows for the Plant 1 page*/}
+      <ScrollView style={{
+        flex: 1,
+        paddingHorizontal:0,
+        width: '100%',
+        height: '45%',
+        paddingTop: 0,
+        position: 'absolute',
+        bottom:89,
+        overflow: 'scroll',
+        //backgroundColor: '#FFFFFF',
+      }}>
+        
+        <View style={styles.ColumnStyle}
+        >
+          <Text style={styles.DetailPageText}>Test1</Text>
+        </View>
+        <View style={styles.ColumnStyle}
+        >
+          <Text style={styles.DetailPageText}>Test2</Text>
+        </View>
+        <View style={styles.ColumnStyle}>
+          <Text style={styles.DetailPageText}>Test3</Text>
+        </View>
+        <View style={styles.ColumnStyle}>
+          <Text style={styles.DetailPageText}>Test4</Text>
+        </View>
+        <View style={styles.ColumnStyle}>
+          <Text style={styles.DetailPageText}>Test1</Text>
+        </View>
+        <View style={styles.ColumnStyle}
+        >
+          <Text style={styles.DetailPageText}>Test1</Text>
+        </View>
+        <View style={styles.ColumnStyle}
+        >
+          <Text style={styles.DetailPageText}>Test1</Text>
+        </View>
+        
+      </ScrollView>
+
     </View>
   );
 };
@@ -118,10 +171,59 @@ const Plant2 = ({ navigation }) => {
         flex: 1,
         alignItems: "center",
         justifyContent: "center",
-        backgroundColor: "#7ACC7A",
+        backgroundColor: "#CFFFDB",
       }}
     >
-      <Button title="Go back" onPress={() => navigation.goBack()} />
+    <ImageBackground
+            style={{width: '100%', height: '100%', justifyContent: 'top', alignItems: 'top'}}
+            source={require("./assets/Plant2.jpeg")}
+            resizeMode="cover"
+            blurRadius={5}
+            opacity={1}
+            //alignSelf="center"
+            
+          />
+    {/*Create rows for the Plant 1 page*/}
+      <ScrollView style={{
+        flex: 1,
+        paddingHorizontal:0,
+        width: '100%',
+        height: '45%',
+        paddingTop: 0,
+        position: 'absolute',
+        bottom:89,
+        overflow: 'scroll',
+        //backgroundColor: '#FFFFFF',
+      }}>
+        
+        <View style={styles.ColumnStyle}
+        >
+          <Text style={styles.DetailPageText}>Test1</Text>
+        </View>
+        <View style={styles.ColumnStyle}
+        >
+          <Text style={styles.DetailPageText}>Test2</Text>
+        </View>
+        <View style={styles.ColumnStyle}>
+          <Text style={styles.DetailPageText}>Test3</Text>
+        </View>
+        <View style={styles.ColumnStyle}>
+          <Text style={styles.DetailPageText}>Test4</Text>
+        </View>
+        <View style={styles.ColumnStyle}>
+          <Text style={styles.DetailPageText}>Test1</Text>
+        </View>
+        <View style={styles.ColumnStyle}
+        >
+          <Text style={styles.DetailPageText}>Test1</Text>
+        </View>
+        <View style={styles.ColumnStyle}
+        >
+          <Text style={styles.DetailPageText}>Test1</Text>
+        </View>
+        
+      </ScrollView>
+
     </View>
   );
 };
@@ -132,10 +234,59 @@ const Plant3 = ({ navigation }) => {
         flex: 1,
         alignItems: "center",
         justifyContent: "center",
-        backgroundColor: "#7ACC7A",
+        backgroundColor: "#CFFFDB",
       }}
     >
-      <Button title="Go back" onPress={() => navigation.goBack()} />
+    <ImageBackground
+            style={{width: '100%', height: '100%', justifyContent: 'top', alignItems: 'top'}}
+            source={require("./assets/Plant3.jpeg")}
+            resizeMode="cover"
+            blurRadius={5}
+            opacity={1}
+            //alignSelf="center"
+            
+          />
+    {/*Create rows for the Plant 1 page*/}
+      <ScrollView style={{
+        flex: 1,
+        paddingHorizontal:0,
+        width: '100%',
+        height: '45%',
+        paddingTop: 0,
+        position: 'absolute',
+        bottom:89,
+        overflow: 'scroll',
+        //backgroundColor: '#FFFFFF',
+      }}>
+        
+        <View style={styles.ColumnStyle}
+        >
+          <Text style={styles.DetailPageText}>Test1</Text>
+        </View>
+        <View style={styles.ColumnStyle}
+        >
+          <Text style={styles.DetailPageText}>Test2</Text>
+        </View>
+        <View style={styles.ColumnStyle}>
+          <Text style={styles.DetailPageText}>Test3</Text>
+        </View>
+        <View style={styles.ColumnStyle}>
+          <Text style={styles.DetailPageText}>Test4</Text>
+        </View>
+        <View style={styles.ColumnStyle}>
+          <Text style={styles.DetailPageText}>Test1</Text>
+        </View>
+        <View style={styles.ColumnStyle}
+        >
+          <Text style={styles.DetailPageText}>Test1</Text>
+        </View>
+        <View style={styles.ColumnStyle}
+        >
+          <Text style={styles.DetailPageText}>Test1</Text>
+        </View>
+        
+      </ScrollView>
+
     </View>
   );
 };
@@ -146,10 +297,59 @@ const Plant4 = ({ navigation }) => {
         flex: 1,
         alignItems: "center",
         justifyContent: "center",
-        backgroundColor: "#7ACC7A",
+        backgroundColor: "#CFFFDB",
       }}
     >
-      <Button title="Go back" onPress={() => navigation.goBack()} />
+    <ImageBackground
+            style={{width: '100%', height: '100%', justifyContent: 'top', alignItems: 'top'}}
+            source={require("./assets/Plant4.jpg")}
+            resizeMode="cover"
+            blurRadius={5}
+            opacity={1}
+            //alignSelf="center"
+            
+          />
+    {/*Create rows for the Plant 1 page*/}
+      <ScrollView style={{
+        flex: 1,
+        paddingHorizontal:0,
+        width: '100%',
+        height: '45%',
+        paddingTop: 0,
+        position: 'absolute',
+        bottom:89,
+        overflow: 'scroll',
+        //backgroundColor: '#FFFFFF',
+      }}>
+        
+        <View style={styles.ColumnStyle}
+        >
+          <Text style={styles.DetailPageText}>Test1</Text>
+        </View>
+        <View style={styles.ColumnStyle}
+        >
+          <Text style={styles.DetailPageText}>Test2</Text>
+        </View>
+        <View style={styles.ColumnStyle}>
+          <Text style={styles.DetailPageText}>Test3</Text>
+        </View>
+        <View style={styles.ColumnStyle}>
+          <Text style={styles.DetailPageText}>Test4</Text>
+        </View>
+        <View style={styles.ColumnStyle}>
+          <Text style={styles.DetailPageText}>Test1</Text>
+        </View>
+        <View style={styles.ColumnStyle}
+        >
+          <Text style={styles.DetailPageText}>Test1</Text>
+        </View>
+        <View style={styles.ColumnStyle}
+        >
+          <Text style={styles.DetailPageText}>Test1</Text>
+        </View>
+        
+      </ScrollView>
+
     </View>
   );
 };
@@ -157,7 +357,7 @@ const Plant4 = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#7ACC7A",
+    backgroundColor: "#CFFFDB",
     alignItems: "center",
     justifyContent: "center",
     position: "absolute",
@@ -220,21 +420,44 @@ const styles = StyleSheet.create({
   headingwelcome: {
     fontSize: 13,
   },
+  TableStyle: {
+      flex: 1,
+      paddingHorizontal:0,
+      width: '100%',
+      paddingTop: 175,
+      //backgroundColor: '#FFFFFF',
+    },
+  ColumnStyle: {
+      borderBottomWidth: .5,
+      borderTopWidth: .5,
+      paddingHorizontal: 16,
+      paddingVertical: 16,
+      paddingTop: 16,
+      backgroundColor: '#A5CCB0'
+    },
+  DetailPageText: {
+      fontSize: 20,
+      fontWeight: 'bold',
+    },
+
 });
 
 const Stack = createStackNavigator();
+
+
 function MyStack() {
   return (
     <NavigationContainer documentTitle={{ enabled: false }}>
       <Stack.Navigator
         initialRouteName="Home"
-        screenOptions={{ headerStyle: tw`bg-green-200` }}
+        screenOptions={{ headerStyle: tw`bg-green-200`}}
       >
         {/* Rename the Heading */}
         <Stack.Screen
-          name="Home"
+          name="MyPlanter"
           component={MainHomeScreen}
           screenOptions={{ headerShown: false }}
+
         />
         <Stack.Screen name="Plant 1" component={Plant1} />
         <Stack.Screen name="Plant 2" component={Plant2} />
