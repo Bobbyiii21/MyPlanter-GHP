@@ -17,7 +17,7 @@ function Notifications() {
   return <NotificationsScreen />;
 }
 
-function ProfileScreen() {
+function SettingsScreen() {
   return (
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
       <Text>Profile!</Text>
@@ -30,7 +30,7 @@ function NavigatedHomeScreen() {
   return (
     (currentPage == "Home" && <HomeScreen />) ||
     (currentPage == "Notifications" && <Notifications />) ||
-    (currentPage == "Profile" && <ProfileScreen />)
+    (currentPage == "Profile" && <SettingsScreen />)
   );
 }
 

@@ -1,4 +1,4 @@
-import React from "react";
+import { React, useState, useEffect } from "react";
 import {
   Button,
   Dimensions,
@@ -9,6 +9,7 @@ import {
   Image,
 } from "react-native";
 import { ScrollView, TouchableOpacity } from "react-native-gesture-handler";
+import { RecoilRoot, useRecoilState } from "recoil";
 
 const { width } = Dimensions.get("window");
 const boxWidth = width / 2; //(width - 40) / 2; // Divide available width by 2 for two columns
@@ -16,7 +17,6 @@ const boxWidth = width / 2; //(width - 40) / 2; // Divide available width by 2 f
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import tw from "twrnc";
-
 
 const MainHomeScreen = ({ navigation }) => {
   return (
@@ -102,6 +102,34 @@ const MainHomeScreen = ({ navigation }) => {
 };
 
 const Plant1 = ({ navigation }) => {
+  const [data, setData] = useState([]);
+
+  url = "https://raw.githubusercontent.com/Bobbyiii21/JsonDemo/main/GardenDemo.json";
+
+  useEffect(() => {
+    fetchData();
+
+    const interval = setInterval(() => {
+      fetchData();
+    }, .3 * 60 * 1000);
+
+    return () => {
+      clearInterval(interval);
+    };
+  }, []);
+
+  const fetchData = async () => {
+    fetch(url)
+      .then((response) => response.json())
+      .then((jsonData) => {
+        setData(jsonData);
+        console.log(jsonData);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
+
   return (
     <View
       style={{
@@ -111,56 +139,64 @@ const Plant1 = ({ navigation }) => {
         backgroundColor: "#CFFFDB",
       }}
     >
-    <ImageBackground
-            style={{width: '100%', height: '100%', justifyContent: 'top', alignItems: 'top'}}
-            source={require("./assets/Plant1.jpeg")}
-            resizeMode="cover"
-            blurRadius={5}
-            opacity={1}
-            //alignSelf="center"
-            
-          />
-    {/*Create rows for the Plant 1 page*/}
-      <ScrollView style={{
-        flex: 1,
-        paddingHorizontal:0,
-        width: '100%',
-        height: '45%',
-        paddingTop: 0,
-        position: 'absolute',
-        bottom:89,
-        overflow: 'scroll',
-        //backgroundColor: '#FFFFFF',
-      }}>
-        
-        <View style={styles.ColumnStyle}
-        >
-          <Text style={styles.DetailPageText}>Test1</Text>
-        </View>
-        <View style={styles.ColumnStyle}
-        >
-          <Text style={styles.DetailPageText}>Test2</Text>
+      <ImageBackground
+        style={{
+          width: "100%",
+          height: "100%",
+          justifyContent: "top",
+          alignItems: "top",
+        }}
+        source={require("./assets/Plant1.jpeg")}
+        resizeMode="cover"
+        blurRadius={5}
+        opacity={1}
+        //alignSelf="center"
+      />
+      {/*Create rows for the Plant 1 page*/}
+      <ScrollView
+        style={{
+          flex: 1,
+          paddingHorizontal: 0,
+          width: "100%",
+          height: "45%",
+          paddingTop: 0,
+          position: "absolute",
+          bottom: 89,
+          overflow: "scroll",
+          //backgroundColor: '#FFFFFF',
+        }}
+      >
+        <View style={styles.ColumnStyle}>
+          <Text style={styles.DetailPageText}> Ambient Humidity:</Text>
         </View>
         <View style={styles.ColumnStyle}>
-          <Text style={styles.DetailPageText}>Test3</Text>
+          <Text style={styles.DetailPageText}>{data.DHTHUM}%</Text>
         </View>
         <View style={styles.ColumnStyle}>
-          <Text style={styles.DetailPageText}>Test4</Text>
+          <Text style={styles.DetailPageText}>Ambient Temperature:</Text>
         </View>
         <View style={styles.ColumnStyle}>
-          <Text style={styles.DetailPageText}>Test1</Text>
+          <Text style={styles.DetailPageText}>{data.DHTTEMP}°F</Text>
         </View>
-        <View style={styles.ColumnStyle}
-        >
-          <Text style={styles.DetailPageText}>Test1</Text>
+        <View style={styles.ColumnStyle}>
+          <Text style={styles.DetailPageText}>Available Light:</Text>
         </View>
-        <View style={styles.ColumnStyle}
-        >
-          <Text style={styles.DetailPageText}>Test1</Text>
+        <View style={styles.ColumnStyle}>
+          <Text style={styles.DetailPageText}>{data.LIGHTREADING}</Text>
         </View>
-        
+        <View style={styles.ColumnStyle}>
+          <Text style={styles.DetailPageText}>Soil Moisture:</Text>
+        </View>
+        <View style={styles.ColumnStyle}>
+          <Text style={styles.DetailPageText}>{data.SOILMOISTURE}</Text>
+        </View>
+        <View style={styles.ColumnStyle}>
+          <Text style={styles.DetailPageText}>Water Level:</Text>
+        </View>
+        <View style={styles.ColumnStyle}>
+          <Text style={styles.DetailPageText}>{data.WATERLEVEL}</Text>
+        </View>
       </ScrollView>
-
     </View>
   );
 };
@@ -174,34 +210,37 @@ const Plant2 = ({ navigation }) => {
         backgroundColor: "#CFFFDB",
       }}
     >
-    <ImageBackground
-            style={{width: '100%', height: '100%', justifyContent: 'top', alignItems: 'top'}}
-            source={require("./assets/Plant2.jpeg")}
-            resizeMode="cover"
-            blurRadius={5}
-            opacity={1}
-            //alignSelf="center"
-            
-          />
-    {/*Create rows for the Plant 1 page*/}
-      <ScrollView style={{
-        flex: 1,
-        paddingHorizontal:0,
-        width: '100%',
-        height: '45%',
-        paddingTop: 0,
-        position: 'absolute',
-        bottom:89,
-        overflow: 'scroll',
-        //backgroundColor: '#FFFFFF',
-      }}>
-        
-        <View style={styles.ColumnStyle}
-        >
+      <ImageBackground
+        style={{
+          width: "100%",
+          height: "100%",
+          justifyContent: "top",
+          alignItems: "top",
+        }}
+        source={require("./assets/Plant2.jpeg")}
+        resizeMode="cover"
+        blurRadius={5}
+        opacity={1}
+        //alignSelf="center"
+      />
+      {/*Create rows for the Plant 1 page*/}
+      <ScrollView
+        style={{
+          flex: 1,
+          paddingHorizontal: 0,
+          width: "100%",
+          height: "45%",
+          paddingTop: 0,
+          position: "absolute",
+          bottom: 89,
+          overflow: "scroll",
+          //backgroundColor: '#FFFFFF',
+        }}
+      >
+        <View style={styles.ColumnStyle}>
           <Text style={styles.DetailPageText}>Test1</Text>
         </View>
-        <View style={styles.ColumnStyle}
-        >
+        <View style={styles.ColumnStyle}>
           <Text style={styles.DetailPageText}>Test2</Text>
         </View>
         <View style={styles.ColumnStyle}>
@@ -213,17 +252,13 @@ const Plant2 = ({ navigation }) => {
         <View style={styles.ColumnStyle}>
           <Text style={styles.DetailPageText}>Test1</Text>
         </View>
-        <View style={styles.ColumnStyle}
-        >
+        <View style={styles.ColumnStyle}>
           <Text style={styles.DetailPageText}>Test1</Text>
         </View>
-        <View style={styles.ColumnStyle}
-        >
+        <View style={styles.ColumnStyle}>
           <Text style={styles.DetailPageText}>Test1</Text>
         </View>
-        
       </ScrollView>
-
     </View>
   );
 };
@@ -237,34 +272,37 @@ const Plant3 = ({ navigation }) => {
         backgroundColor: "#CFFFDB",
       }}
     >
-    <ImageBackground
-            style={{width: '100%', height: '100%', justifyContent: 'top', alignItems: 'top'}}
-            source={require("./assets/Plant3.jpeg")}
-            resizeMode="cover"
-            blurRadius={5}
-            opacity={1}
-            //alignSelf="center"
-            
-          />
-    {/*Create rows for the Plant 1 page*/}
-      <ScrollView style={{
-        flex: 1,
-        paddingHorizontal:0,
-        width: '100%',
-        height: '45%',
-        paddingTop: 0,
-        position: 'absolute',
-        bottom:89,
-        overflow: 'scroll',
-        //backgroundColor: '#FFFFFF',
-      }}>
-        
-        <View style={styles.ColumnStyle}
-        >
+      <ImageBackground
+        style={{
+          width: "100%",
+          height: "100%",
+          justifyContent: "top",
+          alignItems: "top",
+        }}
+        source={require("./assets/Plant3.jpeg")}
+        resizeMode="cover"
+        blurRadius={5}
+        opacity={1}
+        //alignSelf="center"
+      />
+      {/*Create rows for the Plant 1 page*/}
+      <ScrollView
+        style={{
+          flex: 1,
+          paddingHorizontal: 0,
+          width: "100%",
+          height: "45%",
+          paddingTop: 0,
+          position: "absolute",
+          bottom: 89,
+          overflow: "scroll",
+          //backgroundColor: '#FFFFFF',
+        }}
+      >
+        <View style={styles.ColumnStyle}>
           <Text style={styles.DetailPageText}>Test1</Text>
         </View>
-        <View style={styles.ColumnStyle}
-        >
+        <View style={styles.ColumnStyle}>
           <Text style={styles.DetailPageText}>Test2</Text>
         </View>
         <View style={styles.ColumnStyle}>
@@ -276,17 +314,13 @@ const Plant3 = ({ navigation }) => {
         <View style={styles.ColumnStyle}>
           <Text style={styles.DetailPageText}>Test1</Text>
         </View>
-        <View style={styles.ColumnStyle}
-        >
+        <View style={styles.ColumnStyle}>
           <Text style={styles.DetailPageText}>Test1</Text>
         </View>
-        <View style={styles.ColumnStyle}
-        >
+        <View style={styles.ColumnStyle}>
           <Text style={styles.DetailPageText}>Test1</Text>
         </View>
-        
       </ScrollView>
-
     </View>
   );
 };
@@ -300,34 +334,37 @@ const Plant4 = ({ navigation }) => {
         backgroundColor: "#CFFFDB",
       }}
     >
-    <ImageBackground
-            style={{width: '100%', height: '100%', justifyContent: 'top', alignItems: 'top'}}
-            source={require("./assets/Plant4.jpg")}
-            resizeMode="cover"
-            blurRadius={5}
-            opacity={1}
-            //alignSelf="center"
-            
-          />
-    {/*Create rows for the Plant 1 page*/}
-      <ScrollView style={{
-        flex: 1,
-        paddingHorizontal:0,
-        width: '100%',
-        height: '45%',
-        paddingTop: 0,
-        position: 'absolute',
-        bottom:89,
-        overflow: 'scroll',
-        //backgroundColor: '#FFFFFF',
-      }}>
-        
-        <View style={styles.ColumnStyle}
-        >
+      <ImageBackground
+        style={{
+          width: "100%",
+          height: "100%",
+          justifyContent: "top",
+          alignItems: "top",
+        }}
+        source={require("./assets/Plant4.jpg")}
+        resizeMode="cover"
+        blurRadius={5}
+        opacity={1}
+        //alignSelf="center"
+      />
+      {/*Create rows for the Plant 1 page*/}
+      <ScrollView
+        style={{
+          flex: 1,
+          paddingHorizontal: 0,
+          width: "100%",
+          height: "45%",
+          paddingTop: 0,
+          position: "absolute",
+          bottom: 89,
+          overflow: "scroll",
+          //backgroundColor: '#FFFFFF',
+        }}
+      >
+        <View style={styles.ColumnStyle}>
           <Text style={styles.DetailPageText}>Test1</Text>
         </View>
-        <View style={styles.ColumnStyle}
-        >
+        <View style={styles.ColumnStyle}>
           <Text style={styles.DetailPageText}>Test2</Text>
         </View>
         <View style={styles.ColumnStyle}>
@@ -339,17 +376,13 @@ const Plant4 = ({ navigation }) => {
         <View style={styles.ColumnStyle}>
           <Text style={styles.DetailPageText}>Test1</Text>
         </View>
-        <View style={styles.ColumnStyle}
-        >
+        <View style={styles.ColumnStyle}>
           <Text style={styles.DetailPageText}>Test1</Text>
         </View>
-        <View style={styles.ColumnStyle}
-        >
+        <View style={styles.ColumnStyle}>
           <Text style={styles.DetailPageText}>Test1</Text>
         </View>
-        
       </ScrollView>
-
     </View>
   );
 };
@@ -421,43 +454,41 @@ const styles = StyleSheet.create({
     fontSize: 13,
   },
   TableStyle: {
-      flex: 1,
-      paddingHorizontal:0,
-      width: '100%',
-      paddingTop: 175,
-      //backgroundColor: '#FFFFFF',
-    },
+    flex: 1,
+    paddingHorizontal: 0,
+    width: "100%",
+    paddingTop: 175,
+    //backgroundColor: '#FFFFFF',
+  },
   ColumnStyle: {
-      borderBottomWidth: .5,
-      borderTopWidth: .5,
-      paddingHorizontal: 16,
-      paddingVertical: 16,
-      paddingTop: 16,
-      backgroundColor: '#A5CCB0'
-    },
+    borderBottomWidth: 0.5,
+    borderTopWidth: 0.5,
+    paddingHorizontal: 16,
+    paddingVertical: 16,
+    paddingTop: 16,
+    backgroundColor: "#A5CCB0",
+  },
   DetailPageText: {
-      fontSize: 20,
-      fontWeight: 'bold',
-    },
-
+    fontSize: 20,
+    fontWeight: "bold",
+    alignSelf: "center",
+  },
 });
 
 const Stack = createStackNavigator();
-
 
 function MyStack() {
   return (
     <NavigationContainer documentTitle={{ enabled: false }}>
       <Stack.Navigator
         initialRouteName="Home"
-        screenOptions={{ headerStyle: tw`bg-green-200`}}
+        screenOptions={{ headerStyle: tw`bg-green-200` }}
       >
         {/* Rename the Heading */}
         <Stack.Screen
           name="MyPlanter"
           component={MainHomeScreen}
           screenOptions={{ headerShown: false }}
-
         />
         <Stack.Screen name="Plant 1" component={Plant1} />
         <Stack.Screen name="Plant 2" component={Plant2} />

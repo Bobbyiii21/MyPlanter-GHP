@@ -32,8 +32,8 @@ const MenuBar = () => {
         style={styles.menuItem}
         onPress={() => setCurrentPage("Profile")}
       >
-        <Ionicons name="ios-person" size={24} color="black" />
-        <Text style={styles.menuItemText}>Profile</Text>
+        <Ionicons name="ios-settings" size={24} color="black" />
+        <Text style={styles.menuItemText}>Settings</Text>
       </TouchableOpacity>
       
     </View>
