@@ -4,11 +4,11 @@
     "slug": "MyPlanter",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/hyperlapseicon.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/splash.png",
-      "resizeMode": "contain",
+      "image": "./assets/Hyperlapse_Splash.png",
+      "resizeMode": "fill",
       "backgroundColor": "#ffffff"
     },
     "assetBundlePatterns": [
